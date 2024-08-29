@@ -1,31 +1,53 @@
 import React from 'react'
-import Sidebar from './components/Sidebar.js'
-import Navbar from './components/navbar.js'
-import '../src/App.css'
-import Contant from './components/Contant.js'
-import Footer from './components/Footer.js'
-import Card from './components/card.js'
-const App = () => {
-  
 
+import Productpage from './pages/productpage'
+
+import Download from './components/Download'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Logout from './components/Logout';
+
+import Home from './pages/Home'
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Goto from './components/Goto';
+import Notgo from './components/Notgo';
+import ProductList from './components/Premium';
+import CreateProducts from './components/crud/CreateProducts';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+
+const App = () => {
   return (
-    <div className='page  b'>
-      <div className='sidebar_part'>
-        <Sidebar />
-      </div>
-      
-      <div className='page_content bg-amber-200'>
-        <div><Navbar/></div>
-        <br></br>
-        <div className='text-gray-800 mt-20 '><Contant name=""arslan /></div>
-        
-        <br></br>
-        <div className='bg-slate-400 py-15 mt-44 mb-12'><Footer/></div>
-      </div>
-      <div>        
-      </div>
-      
-    </div>
+    <>
+    
+    <Router>
+        <Header/>
+            <Routes>
+                
+            <Route path='/' element={<Register/>}/>
+            
+                <Route path='/home' element={<Home/>}/>
+                
+                <Route path="/products" element={< Productpage/>}/>
+                <Route path='/createproducts' element={<CreateProducts/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/logout' element={<Logout/>}>
+                <Route path='Goto'element={<Goto/>}/>
+                <Route path='Notgo' element={<Notgo/>}/>
+                </Route>
+                <Route path='/premium' element={<ProductList/>}/>
+                
+
+                
+            </Routes>
+           <Footer/>
+           
+        </Router>
+    
+
+    </>
   )
 }
 
